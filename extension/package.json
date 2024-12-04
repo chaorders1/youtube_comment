@@ -1,7 +1,7 @@
 {
-  "name": "chrome-extension-boilerplate",
+  "name": "youtube-comment-agent",
   "version": "1.0.0",
-  "description": "A boilerplate for Chrome extensions",
+  "description": "Youtube Comment Agent - A Chrome extension for managing YouTube comments",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
