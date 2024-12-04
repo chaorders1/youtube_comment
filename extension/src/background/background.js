@@ -11,6 +11,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     handleDataStorage(request.data, sendResponse);
     return true;
   }
+
+  if (request.type === 'OPEN_UPGRADE_URL') {
+    // Open URL in new tab
+    chrome.tabs.create({ url: request.url });
+    return true;
+  }
 });
 
 // Handle extension icon click

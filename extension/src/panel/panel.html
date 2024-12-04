@@ -26,10 +26,10 @@
 
         <!-- Main Content Area -->
         <main class="content-area">
-            <!-- Comments Tab Content -->
+            <!-- Extract Tab Content -->
             <div class="tab-content active" id="transcript-content">
                 <div class="comments-container">
-                    <!-- Add error message container -->
+                    <!-- Error Message Container -->
                     <div class="error-message" style="display: none;">
                         <div class="error-content">
                             <svg viewBox="0 0 24 24" width="24" height="24">
@@ -70,84 +70,60 @@
                 </div>
             </div>
 
-            <!-- Summary Tab Content -->
+            <!-- Insight Tab Content -->
             <div class="tab-content" id="summary-content">
-                <div class="under-development">Under Development</div>
+                <div class="under-development">upcoming</div>
             </div>
 
-            <!-- AI Chat Tab Content -->
+            <!-- AI Reply Tab Content -->
             <div class="tab-content" id="ai-chat-content">
-                <div class="under-development">Under Development</div>
+                <div class="under-development">upcoming</div>
             </div>
 
-            <!-- Upgrade Tab Content -->
+            <!-- Premium Tab Content -->
             <div class="tab-content" id="upgrade-content">
                 <div class="upgrade-container">
                     <div class="upgrade-header">
-                        <h2>Enhance Your Experience</h2>
+                        <div class="premium-badge">Premium</div>
+                        <h2>Your Super Comment Agent</h2>
                         <p>Unlock all premium features</p>
                     </div>
                     
-                    <div class="features-grid">
+                    <div class="features-list">
                         <div class="feature-item">
-                            <span>✓ Unlimited extractions</span>
+                            <div class="feature-icon">✓</div>
+                            <span>Instantly extract comments from any YouTube URL</span>
                         </div>
                         <div class="feature-item">
-                            <span>✓ Advanced filtering</span>
+                            <div class="feature-icon">✓</div>
+                            <span>Generate unlimited AI responses to comments</span>
                         </div>
                         <div class="feature-item">
-                            <span>✓ Export to CSV/Excel</span>
+                            <div class="feature-icon">✓</div>
+                            <span>Get deep insights into channel engagement</span>
                         </div>
                         <div class="feature-item">
-                            <span>✓ AI-powered analysis</span>
+                            <div class="feature-icon">✓</div>
+                            <span>Smart comment analysis powered by AI</span>
                         </div>
                     </div>
 
-                    <div class="pricing-simple">
-                        <div class="price">$4.99<span>/month</span></div>
-                        <a href="https://bit.ly/chaorders" target="_blank" class="upgrade-button">
-                            Get Premium
+                    <div class="pricing-card">
+                        <div class="price-tag">
+                            <span class="currency">$</span>
+                            <span class="amount">0.99</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <button class="upgrade-button">
+                            Get Premium Access
                             <svg viewBox="0 0 24 24" width="16" height="16">
                                 <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"/>
                             </svg>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
         </main>
-
-        <!-- Comment Template (Hidden) -->
-        <template id="comment-template">
-            <div class="comment">
-                <div class="comment-header">
-                    <img class="author-avatar" src="" alt="User avatar">
-                    <div class="comment-meta">
-                        <a href="" class="author-name" target="_blank"></a>
-                        <span class="comment-timestamp"></span>
-                    </div>
-                </div>
-                <div class="comment-content"></div>
-                <div class="comment-footer">
-                    <span class="likes-count"></span>
-                    <button class="reply-btn">Reply</button>
-                </div>
-                <div class="comment-replies"></div>
-            </div>
-        </template>
-
-        <!-- Reply Template (Hidden) -->
-        <template id="reply-template">
-            <div class="reply">
-                <div class="reply-header">
-                    <span class="reply-author"></span>
-                    <span class="reply-timestamp"></span>
-                </div>
-                <div class="reply-content"></div>
-                <div class="reply-footer">
-                    <span class="reply-likes"></span>
-                </div>
-            </div>
-        </template>
     </div>
     <script type="module" src="panel.js"></script>
 </body>

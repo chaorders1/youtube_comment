@@ -6,6 +6,7 @@ class Panel {
         this.commentsManager = new CommentsManager();
         this.initializeTabs();
         this.initializeComments();
+        this.initializeUpgradeButton();
     }
 
     initializeTabs() {
@@ -14,7 +15,12 @@ class Panel {
         tabs.forEach(tab => {
             const tabElement = document.querySelector(`[data-tab="${tab}"]`);
             if (tabElement) {
-                tabElement.addEventListener('click', () => this.switchTab(tab));
+                tabElement.addEventListener('click', () => {
+                    this.switchTab(tab);
+                    if (tab === 'upgrade') {
+                        this.trackUpgradeView();
+                    }
+                });
             }
         });
     }
@@ -50,6 +56,43 @@ class Panel {
         // Add active class to selected tab and content
         document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
         document.querySelector(`#${tabId}-content`).classList.add('active');
+    }
+
+    trackUpgradeView() {
+        // Optional: Add analytics tracking when user views upgrade tab
+        try {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'view_upgrade_tab');
+            }
+        } catch (error) {
+            console.debug('Analytics not available');
+        }
+    }
+
+    initializeUpgradeButton() {
+        const upgradeButton = document.querySelector('.upgrade-button');
+        if (upgradeButton) {
+            upgradeButton.addEventListener('click', () => {
+                // Send message to background script to open URL
+                chrome.runtime.sendMessage({ 
+                    type: 'OPEN_UPGRADE_URL',
+                    url: 'https://bit.ly/chaorders'
+                });
+                
+                // Track upgrade click
+                this.trackUpgradeClick();
+            });
+        }
+    }
+
+    trackUpgradeClick() {
+        try {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'click_upgrade_button');
+            }
+        } catch (error) {
+            console.debug('Analytics not available');
+        }
     }
 }
 
