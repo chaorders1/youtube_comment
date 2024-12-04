@@ -22,10 +22,12 @@ class CommentsManager {
             this.updateChannelInfo(channelInfo);
             
             // Update loading status
-            this.loadingStatusElement.textContent = 'Loading channel info...';
+            this.loadingStatusElement.textContent = 'Loading comments...';
             
-            // TODO: Fetch comments here
-            this.totalCommentsElement.textContent = '0 comments';
+            // Fetch comments
+            const comments = await YouTubeUtils.getVideoComments(videoId);
+            this.totalCommentsElement.textContent = `${comments.length} comments`;
+            this.renderComments(comments);
             
             this.showLoading(false);
         } catch (error) {
@@ -65,6 +67,26 @@ class CommentsManager {
         if (this.errorElement) {
             this.errorElement.style.display = 'none';
         }
+    }
+
+    renderComments(comments) {
+        if (!this.commentsListElement) return;
+        
+        this.commentsListElement.innerHTML = comments.map(comment => `
+            <div class="comment">
+                <div class="comment-header">
+                    <img class="author-avatar" src="${comment.authorAvatar}" alt="Avatar">
+                    <div class="comment-meta">
+                        <a href="${comment.authorChannelUrl}" class="author-name">${comment.authorName}</a>
+                        <span class="comment-timestamp">${comment.timestamp}</span>
+                    </div>
+                </div>
+                <div class="comment-content">${comment.text}</div>
+                <div class="comment-footer">
+                    <span class="likes-count">${comment.likeCount} likes</span>
+                </div>
+            </div>
+        `).join('');
     }
 }
 
