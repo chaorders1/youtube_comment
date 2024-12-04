@@ -13,6 +13,42 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       success: true
     });
   }
+
+  if (request.action === 'getChannelInfo') {
+    try {
+      // Get channel info from YouTube's page data
+      const ytInitialData = window.ytInitialData;
+      let channelName = 'Unknown Channel';
+      let subscriberCount = 'N/A';
+
+      if (ytInitialData?.contents?.twoColumnWatchNextResults?.results?.results?.contents) {
+        const contents = ytInitialData.contents.twoColumnWatchNextResults.results.results.contents;
+        const videoSecondaryInfoRenderer = contents.find(
+          content => content.videoSecondaryInfoRenderer
+        )?.videoSecondaryInfoRenderer;
+
+        if (videoSecondaryInfoRenderer) {
+          // Get channel name
+          channelName = videoSecondaryInfoRenderer.owner?.videoOwnerRenderer?.title?.runs?.[0]?.text || channelName;
+          
+          // Get subscriber count
+          subscriberCount = videoSecondaryInfoRenderer.owner?.videoOwnerRenderer?.subscriberCountText?.simpleText || subscriberCount;
+        }
+      }
+
+      sendResponse({
+        channelName,
+        subscriberCount,
+        success: true
+      });
+    } catch (error) {
+      console.error('Error getting channel info:', error);
+      sendResponse({
+        success: false,
+        error: error.message
+      });
+    }
+  }
   return true;
 });
 

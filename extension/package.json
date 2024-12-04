@@ -12,5 +12,8 @@
     "boilerplate"
   ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "node-html-parser": "^6.1.12"
+  }
 }
