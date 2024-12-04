@@ -30,7 +30,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 8px;
+    padding: 16px 12px;
     cursor: pointer;
     transition: all 0.2s ease;
     white-space: nowrap;
@@ -63,10 +63,11 @@
 }
 
 .tab-text {
-    font-size: 13px;
+    font-size: 15px;
     text-align: center;
     width: 100%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 400;
 }
 
 /* Content Area */
@@ -246,4 +247,20 @@
     text-align: center;
     padding: 20px;
     color: #666;
+}
+
+/* Under Development Message */
+.under-development {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 16px;
+    color: #666;
+    font-style: italic;
+    padding: 40px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 } 

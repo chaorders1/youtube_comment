@@ -1,42 +1,34 @@
 /**
- * Data Storage Module
- * Handles data persistence and retrieval
+ * Simple data storage using Chrome storage API
  */
-
 export class DataStorage {
-  constructor(namespace = 'default') {
-    this.namespace = namespace;
-  }
-
   /**
    * Save data to storage
    * @param {string} key - Storage key
    * @param {any} data - Data to store
-   * @returns {Promise} Promise that resolves when data is saved
+   * @returns {Promise<boolean>} Success status
    */
-  async saveData(key, data) {
-    const storageKey = `${this.namespace}_${key}`;
+  static async save(key, data) {
     try {
-      await chrome.storage.sync.set({ [storageKey]: data });
+      await chrome.storage.sync.set({ [key]: data });
       return true;
     } catch (error) {
-      console.error('Error saving data:', error);
+      console.error('Storage error:', error);
       return false;
     }
   }
 
   /**
-   * Retrieve data from storage
+   * Get data from storage
    * @param {string} key - Storage key
-   * @returns {Promise<any>} Promise that resolves with stored data
+   * @returns {Promise<any>} Stored data
    */
-  async getData(key) {
-    const storageKey = `${this.namespace}_${key}`;
+  static async get(key) {
     try {
-      const result = await chrome.storage.sync.get(storageKey);
-      return result[storageKey];
+      const result = await chrome.storage.sync.get(key);
+      return result[key];
     } catch (error) {
-      console.error('Error retrieving data:', error);
+      console.error('Storage error:', error);
       return null;
     }
   }
