@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/themes.css">
+    <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+    <div class="panel-container">
+        <!-- Tab Navigation -->
+        <nav class="tab-navigation">
+            <div class="tab-item active" data-tab="transcript">
+                <span class="tab-text">Comments</span>
+            </div>
+            <div class="tab-item" data-tab="summary">
+                <span class="tab-text">Summary</span>
+            </div>
+            <div class="tab-item" data-tab="notes">
+                <span class="tab-text">Export</span>
+            </div>
+            <div class="tab-item" data-tab="ai-chat">
+                <span class="tab-text">AI Chat</span>
+            </div>
+            <div class="tab-item" data-tab="upgrade">
+                <span class="tab-text">Upgrade</span>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            <!-- Comments Tab Content -->
+            <div class="tab-content active" id="transcript-content">
+                <h2>YouTube Comments Extractor</h2>
+                <p>Extract and analyze comments from YouTube videos</p>
+                <input type="text" id="commentsLimit" placeholder="Number of comments">
+                <button>Extract Comments</button>
+                <div class="comments-container">
+                    <p class="placeholder-text">YouTube comments will appear here</p>
+                </div>
+            </div>
+
+            <!-- Summary Tab Content -->
+            <div class="tab-content" id="summary-content">
+                <h2>Data Processing</h2>
+                <p>Process and analyze page data</p>
+                <button>Process Data</button>
+                <div class="summary-container">
+                    <!-- Summary results will appear here -->
+                </div>
+            </div>
+
+            <!-- Export Tab Content -->
+            <div class="tab-content" id="notes-content">
+                <h2>Export Text</h2>
+                <p>Export data as text file</p>
+                <button>Export</button>
+                <div class="export-container">
+                    <!-- Export content will appear here -->
+                </div>
+            </div>
+
+            <!-- AI Chat Tab Content -->
+            <div class="tab-content" id="ai-chat-content">
+                <h2>Store Data</h2>
+                <p>Save and manage your note</p>
+                <button>Save Notes</button>
+                <div class="notes-container">
+                    <!-- Notes content will appear here -->
+                </div>
+            </div>
+
+            <!-- Upgrade Tab Content -->
+            <div class="tab-content" id="upgrade-content">
+                <h2>Premium Features</h2>
+                <p>Upgrade to access premium features</p>
+                <button>Upgrade Now</button>
+                <div class="premium-container">
+                    <!-- Premium features will appear here -->
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="panel.js"></script>
+</body>
+</html> 
